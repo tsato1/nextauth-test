@@ -13,6 +13,10 @@ const ClientPage = () => {
     }
   })
 
+  if (!session?.user) {
+    return <></>
+  }
+
   return (
     <section>
       <ProtectedComponent user={session?.user} pageName="Client Page" />

@@ -1,10 +1,6 @@
 import Image from "next/image"
 
-type User = {
-  name?: string | null | undefined
-  email?: string | null | undefined
-  imageUrl?: string | null | undefined
-}
+import type { User } from "next-auth"
 
 interface ProtectedComponentProps {
   user?: User,
@@ -27,11 +23,12 @@ export const ProtectedComponent = ({
       <h2>This is {pageName}</h2>
       <br />
       <p>Hi, {user.name || "Name Undefined"}</p>
-      {user.imageUrl && <Image
-        src={user.imageUrl}
+      {user.image && <Image
+        src={user.image}
         alt="Profile Image"
         width={100}
         height={100} />}
+      <p>Role: {user.role}</p>
     </div>
   )
 }
